@@ -11,27 +11,27 @@
 
 		// se separan los inputs-radio
 		var radios = inputs.filter(function(elem) {
-			return elem.type != "radio";
+			return elem.type == "radio";
 		});
 
 		// se hace un array con todos los valores de los atributos name de los
 		// inputs-radio para agruparlos
 		var names = radios.reduce(function(a, elem) {
-			if (a.indexOf(elem) < 0) a.push(elem);
+			if (a.indexOf(elem.name) < 0) a.push(elem.name);
 			return a;
 		}, []);
 
 		// se separan los botones de cualquier tipo
 		var buttons = inputs.filter(function(elem) {
-			return elem.type != "button" || elem.type != "submit";
+			return elem.type == "button" || elem.type == "submit";
 		});
 
 		// se separan todos los controles que no sean botones ni input-radio
 		var controles = inputs.filter(function(elem) {
-			return elem.type != "radio" || elem.type != "button" || elem.type != "submit";
+			return elem.type != "radio" && elem.type != "button" && elem.type != "submit";
 		});
 
-		var prop; // variable para obtener los controles del formulario 	
+		var prop; // variable para obtener los controles del formulario
 
 		this.self = frm;
 
